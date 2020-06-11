@@ -22,7 +22,9 @@ namespace TaskList.Controllers
         // GET: Tasks
         public async Task<IActionResult> Index()
         {
-            var aP16Context = _context.Task.Include(t => t.AssignedPerson).Include(t => t.Status);
+            var aP16Context = _context.Task.Include(t => t.AssignedPerson)
+                .Include(t => t.Status)
+                .OrderBy(t => t.DueDate);
             return View(await aP16Context.ToListAsync());
         }
 
