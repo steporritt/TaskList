@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TaskList.Models
 {
@@ -16,9 +17,10 @@ namespace TaskList.Models
         public int? StatusId { get; set; }
         public DateTime? DueDate { get; set; }
         public int? AssignedPersonId { get; set; }
-
         public virtual Person AssignedPerson { get; set; }
         public virtual Status Status { get; set; }
+        [NotMapped]
+        public List<Microsoft.AspNetCore.Http.IFormFile> Files { get; set; }
         public virtual ICollection<TaskAttachment> TaskAttachment { get; set; }
     }
 }

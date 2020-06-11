@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TaskList.Models
 {
@@ -11,6 +12,8 @@ namespace TaskList.Models
         }
 
         public int Id { get; set; }
+        [NotMapped]
+        public string DisplayName { get { return FirstName + ' ' + LastName; } }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
